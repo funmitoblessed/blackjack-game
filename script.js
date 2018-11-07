@@ -17,15 +17,15 @@ let hitButton = document.getElementById('hit-button');
 let stayButton = document.getElementById('stay-button');
 
 // Game Variables
-let gameStarted = false,
-    gameOver = false,
+let gameStarted = false;
+let gameOver = false,
     playerWon = false,
     dealerCards = [],
     playerCards = [],
     dealerScore = 0,
-    playerScore = 0,
-    deck = [],
-    card = {};
+    playerScore = 0;
+let deck = [];
+let card = {};
 
 
 hitButton.style.display = 'none';
@@ -48,24 +48,25 @@ newGameButton.addEventListener('click', function() {
     hitButton.style.display = 'inline';
     stayButton.style.display = 'inline';
     showStatus();
+    newFunction();
 });
 
 
 function createDeck() {
-    let deck = [];
+    deck = [];
+    card = {};
     for (let suiteIdx = 0; suiteIdx < suites.length; suiteIdx++) {
         for (let valueIdx = 0; valueIdx < values.length; valueIdx++) {
-            card = {
-                suite: suites[suiteIdx],
-                value: values[valueIdx]
-            };
+            card.suite = suites[suiteIdx];
+            card.value = values[valueIdx];
             deck.push(card);
         }
     }
+
     return deck;
 }
 
-console.log(card);
+
 
 function shuffleDeck(deck) {
     for (let i = 0; i < deck.length; i++) {
@@ -74,7 +75,9 @@ function shuffleDeck(deck) {
         deck[swapIdx] = deck[i];
         deck[i] = tmp;
     }
+    return;
 }
+
 
 function getCardString(card) {
     return card.value + ' of ' + card.suite;
@@ -97,10 +100,9 @@ function showStatus() {
     }
 }
 
-console.log("Welcome to Blackjack!");
-
-console.log("You are dealt: ");
-
-console.log(getCardString(card));
-// console.log(" " + getCardString(card));
-// console.log(" " + getCardString(card));
+function newFunction() {
+    console.log("Welcome to Blackjack!");
+    console.log("You are dealt: ");
+    console.log(" " + getCardString(card));
+    console.log(" " + getCardString(card));
+}
