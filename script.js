@@ -2,7 +2,6 @@
 // Blackjack Game
 // by Funmito Blessed (Pluralsight Javascript course)
 
-
 // Card Variables
 let suites = ['Hearts', 'Clubs', 'Diamonds', 'Spades'],
     values = ['Ace', 'King', 'Queen', 'Jack',
@@ -27,11 +26,9 @@ let gameOver = false,
 let deck = [];
 let card = {};
 
-
 hitButton.style.display = 'none';
 stayButton.style.display = 'none';
 showStatus();
-
 
 newGameButton.addEventListener('click', function() {
     gameStarted = false;
@@ -51,7 +48,6 @@ newGameButton.addEventListener('click', function() {
     newFunction();
 });
 
-
 function createDeck() {
     deck = [];
     card = {};
@@ -66,8 +62,6 @@ function createDeck() {
     return deck;
 }
 
-
-
 function shuffleDeck(deck) {
     for (let i = 0; i < deck.length; i++) {
         let swapIdx = Math.trunc(Math.random() * deck.length);
@@ -78,16 +72,13 @@ function shuffleDeck(deck) {
     return;
 }
 
-
 function getCardString(card) {
     return card.value + ' of ' + card.suite;
 }
 
-
 function getNextCard() {
     return deck.shift();
 }
-
 
 function showStatus() {
     if (!gameStarted) {
