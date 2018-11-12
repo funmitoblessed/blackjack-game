@@ -45,7 +45,6 @@ newGameButton.addEventListener('click', function() {
     hitButton.style.display = 'inline';
     stayButton.style.display = 'inline';
     showStatus();
-    newFunction();
 });
 
 hitButton.addEventListener('click', function() {
@@ -138,7 +137,33 @@ function updateScores() {
 }
 
 function checkForEndOfGame() {
-    // TODO
+
+    updateScores();
+
+    if (gameOver) {
+        // let dealer take cards
+        while (dealerScore < playerScore &&
+            playerScore <= 21 &&
+            dealerScore <= 21) {
+            dealerCards.push(getNextCard());
+            updateScores();
+        }
+    }
+
+    if (playerScore > 21) {
+        playerWon = false;
+        gameOver = true;
+    } else if (dealerScore > 21) {
+        playerWon = true;
+        gameOver = true;
+    } else if (gameOver) {
+
+        if (playerScore > dealerScore) {
+            playerWon = true;
+        } else {
+            playerWon = false;
+        }
+    }
 }
 
 function showStatus() {
@@ -178,17 +203,4 @@ function showStatus() {
         hitButton.style.display = 'none';
         stayButton.style.display = 'none';
     }
-
-    // for (var i = 0; i < deck.length; i++) {
-    //     console.log(getCardString(deck[i]));
-    //     textArea.innerText += '\n' + getCardString(deck[i]);
-    // }
-
 }
-
-function newFunction() {
-    console.log("Welcome to Blackjack!");
-    console.log("You are dealt: ");
-    console.log(" " + getCardString(deck[0]));
-    console.log(" " + getCardString(deck[10]));
-};
